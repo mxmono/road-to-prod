@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://b637t5bpdi1j3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dw37p"]
+size = Vector2(16, 8)
+
+[node name="Bullet" type="Area2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 16.0
+offset_bottom = 8.0
+color = Color(0.796509, 0.536319, 0.285206, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, 4)
+shape = SubResource("RectangleShape2D_dw37p")

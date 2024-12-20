@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://cv1y4601etar6"]
+
+[ext_resource type="Script" path="res://dev/bug.gd" id="1_2sbn5"]
+[ext_resource type="Texture2D" uid="uid://2t65dgcl0nws" path="res://texture/ski-bugs.png" id="2_l3x6j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nckvu"]
+atlas = ExtResource("2_l3x6j")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jykn4"]
+atlas = ExtResource("2_l3x6j")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82d1m"]
+atlas = ExtResource("2_l3x6j")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5awc"]
+atlas = ExtResource("2_l3x6j")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sjd0u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nckvu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jykn4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82d1m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c5awc")
+}],
+"loop": true,
+"name": &"die",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tt8gx"]
+size = Vector2(29, 29)
+
+[node name="Bug" type="Area2D"]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_2sbn5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_sjd0u")
+autoplay = "default"
+frame = 1
+frame_progress = 0.493654
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tt8gx")

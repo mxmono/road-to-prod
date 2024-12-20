@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://d2trkx1c5ihfq"]
+
+[ext_resource type="Script" path="res://dev/feature.gd" id="1_obssj"]
+[ext_resource type="Texture2D" uid="uid://bniw5676j87ik" path="res://texture/ski-feature.png" id="2_rqerc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6l0qh"]
+atlas = ExtResource("2_rqerc")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0yc1"]
+atlas = ExtResource("2_rqerc")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sjd0u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6l0qh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x0yc1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tt8gx"]
+size = Vector2(29, 29)
+
+[node name="Feature" type="Area2D"]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_obssj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_sjd0u")
+autoplay = "default"
+frame = 1
+frame_progress = 0.40468
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tt8gx")

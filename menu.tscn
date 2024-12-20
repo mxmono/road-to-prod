@@ -1,0 +1,128 @@
+[gd_scene load_steps=7 format=3 uid="uid://cncd6e4rt8f11"]
+
+[ext_resource type="FontFile" uid="uid://8hhosy45djqn" path="res://fonts/mago3.ttf" id="1_i10xv"]
+[ext_resource type="Script" path="res://menu.gd" id="1_il3hp"]
+[ext_resource type="Texture2D" uid="uid://b4jxkxtt3okpk" path="res://texture/agenda-bullet.png" id="3_tltsr"]
+[ext_resource type="Theme" uid="uid://3k1yvpgpomee" path="res://menu.tres" id="4_sj7mq"]
+[ext_resource type="Theme" uid="uid://jdfvi8tki14" path="res://popup.tres" id="5_wtm4y"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0l4hc"]
+font = ExtResource("1_i10xv")
+font_size = 64
+
+[node name="Menu" type="Node2D"]
+script = ExtResource("1_il3hp")
+
+[node name="BG" type="ColorRect" parent="."]
+offset_right = 1280.0
+offset_bottom = 720.0
+metadata/_edit_lock_ = true
+
+[node name="Left" type="ColorRect" parent="."]
+offset_right = 391.0
+offset_bottom = 720.0
+color = Color(0.67, 0, 0, 1)
+
+[node name="AgendaLabel" type="Label" parent="Left"]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 334.0
+offset_right = 274.0
+offset_bottom = 385.0
+text = "AGENDA"
+label_settings = SubResource("LabelSettings_0l4hc")
+
+[node name="Buttons" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 568.0
+offset_top = 298.0
+offset_right = 608.0
+offset_bottom = 338.0
+
+[node name="VBox" type="VBoxContainer" parent="Buttons"]
+layout_mode = 2
+offset_right = 600.0
+offset_bottom = 600.0
+
+[node name="Start" type="HBoxContainer" parent="Buttons/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Arrow" type="TextureRect" parent="Buttons/VBox/Start"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_tltsr")
+expand_mode = 3
+
+[node name="Button" type="Button" parent="Buttons/VBox/Start"]
+layout_mode = 2
+theme = ExtResource("4_sj7mq")
+text = "START ADVENTURE"
+flat = true
+
+[node name="Select" type="HBoxContainer" parent="Buttons/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Arrow" type="TextureRect" parent="Buttons/VBox/Select"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_tltsr")
+expand_mode = 3
+
+[node name="Button" type="Button" parent="Buttons/VBox/Select"]
+layout_mode = 2
+theme = ExtResource("4_sj7mq")
+text = "SELECT STAGE"
+flat = true
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="Buttons/VBox/Select"]
+title = "NOTE"
+position = Vector2i(0, 36)
+size = Vector2i(800, 192)
+theme = ExtResource("5_wtm4y")
+dialog_text = "SELECT STAGE IS ONLY RECOMMENDED AFTER YOU HAVE PLAYED THROUGH ADVENTURE. PROCEED TO STAGE SELECT?"
+dialog_autowrap = true
+
+[node name="Title" type="HBoxContainer" parent="Buttons/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Arrow" type="TextureRect" parent="Buttons/VBox/Title"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_tltsr")
+expand_mode = 3
+
+[node name="Button" type="Button" parent="Buttons/VBox/Title"]
+layout_mode = 2
+theme = ExtResource("4_sj7mq")
+text = "RETURN TO TITLE"
+flat = true
+
+[node name="Quit" type="HBoxContainer" parent="Buttons/VBox"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Arrow" type="TextureRect" parent="Buttons/VBox/Quit"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_tltsr")
+expand_mode = 3
+
+[node name="Button" type="Button" parent="Buttons/VBox/Quit"]
+layout_mode = 2
+theme = ExtResource("4_sj7mq")
+text = "QUIT
+"
+flat = true

@@ -1,0 +1,120 @@
+[gd_scene load_steps=15 format=3 uid="uid://cm1fabcede3wy"]
+
+[ext_resource type="Script" path="res://dev/robson_ski.gd" id="1_fkuhv"]
+[ext_resource type="Texture2D" uid="uid://bn6rx7j7c65vd" path="res://texture/robson-ski.png" id="1_ldhhc"]
+[ext_resource type="FontFile" uid="uid://dgvxpoi0ohhb1" path="res://fonts/mago2.ttf" id="3_kgiuh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_40ig7"]
+atlas = ExtResource("1_ldhhc")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfcng"]
+atlas = ExtResource("1_ldhhc")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gtlxk"]
+atlas = ExtResource("1_ldhhc")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5enpb"]
+atlas = ExtResource("1_ldhhc")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_womwq"]
+atlas = ExtResource("1_ldhhc")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vcvmr"]
+atlas = ExtResource("1_ldhhc")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vlyns"]
+atlas = ExtResource("1_ldhhc")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ttc8g"]
+atlas = ExtResource("1_ldhhc")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_htgs1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_40ig7")
+}, {
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_nfcng")
+}],
+"loop": false,
+"name": &"shock",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gtlxk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5enpb")
+}],
+"loop": true,
+"name": &"sidewalk",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_womwq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vcvmr")
+}],
+"loop": true,
+"name": &"ski",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vlyns")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ttc8g")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 2.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bp5eq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qp48e"]
+font = ExtResource("3_kgiuh")
+font_size = 32
+font_color = Color(0.0788925, 0.499594, 0.609556, 1)
+
+[node name="RobsonSki" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 3
+motion_mode = 1
+up_direction = Vector2(0, 1)
+wall_min_slide_angle = 0.0872665
+script = ExtResource("1_fkuhv")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(0, -120)
+zoom = Vector2(2, 2)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_htgs1")
+animation = &"shock"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_bp5eq")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -5.0
+offset_top = -40.0
+offset_right = 11.0
+offset_bottom = -14.0
+text = "+1"
+label_settings = SubResource("LabelSettings_qp48e")
+horizontal_alignment = 1

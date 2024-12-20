@@ -1,0 +1,1 @@
+class_name PlayerBall extends RigidBody2D

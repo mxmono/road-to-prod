@@ -1,0 +1,93 @@
+[gd_scene load_steps=12 format=3 uid="uid://dkyiyuk3xulfl"]
+
+[ext_resource type="Texture2D" uid="uid://2dj1mwlfi44g" path="res://texture/dialogues.png" id="1_cu1no"]
+[ext_resource type="Script" path="res://dialog.gd" id="1_nbfyc"]
+[ext_resource type="FontFile" uid="uid://dgvxpoi0ohhb1" path="res://fonts/mago2.ttf" id="2_jrimc"]
+[ext_resource type="FontFile" uid="uid://ds7bt8fh72gsp" path="res://fonts/mago1.ttf" id="3_ocgrb"]
+[ext_resource type="Texture2D" uid="uid://dfgmfpfn5irwk" path="res://texture/dialog-triangle.png" id="5_8v8g0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lx7jm"]
+font = ExtResource("2_jrimc")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_klbjp"]
+font = ExtResource("3_ocgrb")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_lctji"]
+font = ExtResource("3_ocgrb")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ws7te"]
+atlas = ExtResource("5_8v8g0")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_efjck"]
+atlas = ExtResource("5_8v8g0")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4trdi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ws7te")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efjck")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="Dialog" type="Polygon2D"]
+color = Color(0, 0, 0, 0.7)
+polygon = PackedVector2Array(0, -1, 253, -1, 259, 5, 259, 30, 433.916, 30, 441, 37, 441, 143, 0, 143)
+script = ExtResource("1_nbfyc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(69, 72)
+scale = Vector2(4, 4)
+texture = ExtResource("1_cu1no")
+region_enabled = true
+region_rect = Rect2(32, 0, 32, 32)
+
+[node name="Name" type="Label" parent="."]
+modulate = Color(0.871963, 0.33526, 0.480929, 1)
+offset_left = 141.0
+offset_top = 3.0
+offset_right = 227.0
+offset_bottom = 29.0
+text = "ROBSON"
+label_settings = SubResource("LabelSettings_lx7jm")
+
+[node name="Dialog" type="Label" parent="."]
+offset_left = 141.0
+offset_top = 46.0
+offset_right = 438.0
+offset_bottom = 134.0
+text = "OK! NOTHING CAN BEAT ME!"
+label_settings = SubResource("LabelSettings_klbjp")
+autowrap_mode = 3
+
+[node name="Click" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0.238)
+offset_left = 320.0
+offset_top = 125.0
+offset_right = 418.0
+offset_bottom = 140.0
+text = "CLICK TO CONTINUE"
+label_settings = SubResource("LabelSettings_lctji")
+autowrap_mode = 3
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2(-16.9054, -2.40542)
+scale = Vector2(1.12162, 1.12162)
+points = PackedVector2Array(140, 29, 212, 29)
+width = 1.0
+
+[node name="Triangle" type="AnimatedSprite2D" parent="."]
+position = Vector2(431, 134)
+sprite_frames = SubResource("SpriteFrames_4trdi")
+autoplay = "default"
+frame = 1
+frame_progress = 0.508476

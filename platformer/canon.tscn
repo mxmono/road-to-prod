@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://c8eik00d1upyt"]
+
+[ext_resource type="Texture2D" uid="uid://exjwnhdeoao0" path="res://texture/canon-base.png" id="1_03fgd"]
+[ext_resource type="Script" path="res://platformer/canon.gd" id="1_q8vns"]
+[ext_resource type="Texture2D" uid="uid://bx4ggq7bejr60" path="res://texture/canon.png" id="2_sliry"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n2qgj"]
+atlas = ExtResource("2_sliry")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l8tm4"]
+atlas = ExtResource("2_sliry")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_22d1x"]
+atlas = ExtResource("2_sliry")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7owg0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n2qgj")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_l8tm4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_22d1x")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 5.0
+}]
+
+[node name="Canon" type="Node2D"]
+script = ExtResource("1_q8vns")
+enabled = true
+
+[node name="CanonBase" type="Sprite2D" parent="."]
+position = Vector2(-6, 2)
+scale = Vector2(2, 2)
+texture = ExtResource("1_03fgd")
+
+[node name="Canon" type="AnimatedSprite2D" parent="."]
+position = Vector2(-8, 0)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_7owg0")
+offset = Vector2(4, 0)
+
+[node name="Marker2D" type="Marker2D" parent="Canon"]
+position = Vector2(12.5, 0)
+scale = Vector2(0.25, 0.25)
+
+[node name="Cooldown" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true

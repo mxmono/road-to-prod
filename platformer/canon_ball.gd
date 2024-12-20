@@ -1,0 +1,1 @@
+class_name CanonBall extends RigidBody2D

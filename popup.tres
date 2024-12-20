@@ -1,0 +1,77 @@
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://jdfvi8tki14"]
+
+[ext_resource type="FontFile" uid="uid://dgvxpoi0ohhb1" path="res://fonts/mago2.ttf" id="1_jcbvb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ri4kk"]
+content_margin_left = 15.0
+content_margin_top = 5.0
+content_margin_right = 15.0
+content_margin_bottom = 5.0
+bg_color = Color(0.210125, 0.470919, 0.606417, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u1dsb"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+expand_margin_left = 15.0
+expand_margin_top = 1.0
+expand_margin_right = 15.0
+expand_margin_bottom = 1.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q0ngn"]
+bg_color = Color(0.670588, 0, 0, 1)
+expand_margin_left = 15.0
+expand_margin_top = 1.0
+expand_margin_right = 15.0
+expand_margin_bottom = 1.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lkob6"]
+bg_color = Color(0, 0, 0, 0.7)
+expand_margin_left = 15.0
+expand_margin_top = 1.0
+expand_margin_right = 15.0
+expand_margin_bottom = 1.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cytyf"]
+expand_margin_left = 15.0
+expand_margin_top = 1.0
+expand_margin_right = 15.0
+expand_margin_bottom = 1.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pyhum"]
+bg_color = Color(0, 0, 0, 0.7)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o45f2"]
+bg_color = Color(0, 0, 0, 0.7)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qov3v"]
+bg_color = Color(0, 0, 0, 0.7)
+expand_margin_left = 5.0
+expand_margin_top = 30.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+anti_aliasing = false
+
+[resource]
+default_font = ExtResource("1_jcbvb")
+default_font_size = 48
+AcceptDialog/icons/close = null
+AcceptDialog/styles/panel = SubResource("StyleBoxFlat_ri4kk")
+Button/colors/font_color = Color(0.658341, 0.65834, 0.65834, 1)
+Button/colors/font_focus_color = Color(0.670588, 0, 0, 1)
+Button/colors/font_hover_color = Color(1, 1, 1, 1)
+Button/font_sizes/font_size = 48
+Button/fonts/font = ExtResource("1_jcbvb")
+Button/icons/icon = null
+Button/styles/focus = SubResource("StyleBoxFlat_u1dsb")
+Button/styles/hover = SubResource("StyleBoxFlat_q0ngn")
+Button/styles/normal = SubResource("StyleBoxFlat_lkob6")
+Button/styles/pressed = SubResource("StyleBoxFlat_cytyf")
+Panel/styles/panel = SubResource("StyleBoxFlat_pyhum")
+PopupPanel/styles/panel = SubResource("StyleBoxFlat_o45f2")
+Window/styles/embedded_border = SubResource("StyleBoxFlat_qov3v")

@@ -1,0 +1,353 @@
+[gd_scene load_steps=38 format=3 uid="uid://copadkrgftda"]
+
+[ext_resource type="Script" path="res://functional/functional.gd" id="1_e8yuu"]
+[ext_resource type="FontFile" uid="uid://8hhosy45djqn" path="res://fonts/mago3.ttf" id="1_kxaxg"]
+[ext_resource type="PackedScene" uid="uid://c3urux6oevdr7" path="res://functional/pinball.tscn" id="2_ecngn"]
+[ext_resource type="LabelSettings" uid="uid://darywhxji60al" path="res://fonts/sub_instructions.tres" id="3_ao76b"]
+[ext_resource type="Texture2D" uid="uid://d02uc8ph0tuuc" path="res://texture/background-flash.png" id="3_rufwc"]
+[ext_resource type="Texture2D" uid="uid://drbidmqkw26fr" path="res://texture/gray-ball.png" id="3_xduaq"]
+[ext_resource type="Texture2D" uid="uid://cs81q4jsklekm" path="res://texture/robson-sword.png" id="4_0ld0j"]
+[ext_resource type="Texture2D" uid="uid://cdvynpw7t6eay" path="res://texture/robson-go.png" id="5_0ot0k"]
+[ext_resource type="Texture2D" uid="uid://7oepc8fyet3i" path="res://texture/key_a.png" id="5_am41e"]
+[ext_resource type="Texture2D" uid="uid://dr3nkn55klqwe" path="res://texture/key_d.png" id="6_cnx5f"]
+[ext_resource type="Texture2D" uid="uid://chhyhsbh5cxl1" path="res://texture/key_space.png" id="7_6nvip"]
+[ext_resource type="PackedScene" uid="uid://cxnlnesppg801" path="res://player.tscn" id="7_w0xtj"]
+[ext_resource type="Texture2D" uid="uid://cv637jsaelto3" path="res://texture/teleport.png" id="8_e1qgv"]
+[ext_resource type="PackedScene" uid="uid://dpw5tr22f2x1l" path="res://pause_menu.tscn" id="9_exwhk"]
+[ext_resource type="FontFile" uid="uid://dgvxpoi0ohhb1" path="res://fonts/mago2.ttf" id="9_vneoo"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_55qny"]
+resource_local_to_scene = true
+line_spacing = -16.0
+font = ExtResource("1_kxaxg")
+font_size = 128
+font_color = Color(0.197384, 0.409751, 0.515149, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ts35b"]
+font = ExtResource("1_kxaxg")
+font_size = 48
+font_color = Color(0.881424, 0.964539, 0.994609, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_6as3u"]
+line_spacing = 0.0
+font = ExtResource("9_vneoo")
+font_size = 32
+font_color = Color(0.479479, 0.793981, 0.824427, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_wmska"]
+line_spacing = -8.0
+font = ExtResource("9_vneoo")
+font_size = 48
+font_color = Color(1, 1, 1, 0.51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gv5bh"]
+atlas = ExtResource("3_rufwc")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yidau"]
+atlas = ExtResource("3_rufwc")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n4nx1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gv5bh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yidau")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pcel3"]
+atlas = ExtResource("4_0ld0j")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pew0r"]
+atlas = ExtResource("4_0ld0j")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8kioy"]
+atlas = ExtResource("4_0ld0j")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_okvmy"]
+atlas = ExtResource("4_0ld0j")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_16era"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pcel3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pew0r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8kioy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_okvmy")
+}],
+"loop": true,
+"name": &"win",
+"speed": 3.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gam0l"]
+atlas = ExtResource("8_e1qgv")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l47px"]
+atlas = ExtResource("8_e1qgv")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_57vba"]
+atlas = ExtResource("8_e1qgv")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lwnth"]
+atlas = ExtResource("8_e1qgv")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r5goo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gam0l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l47px")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_57vba")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lwnth")
+}],
+"loop": false,
+"name": &"open",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lox7g"]
+size = Vector2(128, 128)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2mnu4"]
+line_spacing = -8.0
+font = ExtResource("9_vneoo")
+font_size = 48
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8fw2x"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_x3e22"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6hlgs"]
+
+[node name="Functional" type="Node2D"]
+script = ExtResource("1_e8yuu")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="BG" type="ColorRect" parent="."]
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.0425536, 0.219275, 0.372408, 1)
+metadata/_edit_lock_ = true
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="StageName" type="Label" parent="GUI"]
+offset_left = 24.0
+offset_top = 16.0
+offset_right = 576.0
+offset_bottom = 223.0
+text = "FUNCTIONAL TEST"
+label_settings = SubResource("LabelSettings_55qny")
+autowrap_mode = 3
+
+[node name="Instructions" type="Label" parent="GUI"]
+offset_left = 32.0
+offset_top = 208.0
+offset_right = 536.0
+offset_bottom = 287.0
+text = "HIT ALL FEATURES     TO CHECK THEY ARE FUNCTIONAL"
+label_settings = SubResource("LabelSettings_ts35b")
+autowrap_mode = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="GUI/Instructions"]
+position = Vector2(338, 18)
+scale = Vector2(4, 4)
+texture = ExtResource("3_xduaq")
+
+[node name="SubIntructions" type="Label" parent="GUI"]
+offset_left = 32.0
+offset_top = 304.0
+offset_right = 352.0
+offset_bottom = 384.0
+text = "BOUNCE ROBSON AROUND TO LIGHT UP the features"
+label_settings = ExtResource("3_ao76b")
+autowrap_mode = 3
+
+[node name="ControlInstructions" type="Control" parent="GUI"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -40.0
+offset_bottom = 40.0
+
+[node name="Controls" type="Label" parent="GUI/ControlInstructions"]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 352.0
+offset_right = 304.0
+offset_bottom = 396.0
+text = "FLIPPER CONTROLS:
+PLUNGER CONTROL:"
+label_settings = SubResource("LabelSettings_6as3u")
+
+[node name="A" type="Sprite2D" parent="GUI/ControlInstructions/Controls"]
+position = Vector2(171, 16)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_am41e")
+
+[node name="D" type="Sprite2D" parent="GUI/ControlInstructions/Controls"]
+position = Vector2(197, 16)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("6_cnx5f")
+
+[node name="Space" type="Sprite2D" parent="GUI/ControlInstructions/Controls"]
+position = Vector2(183, 43)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("7_6nvip")
+
+[node name="PlungerInstruction" type="Label" parent="GUI/ControlInstructions"]
+layout_mode = 0
+offset_left = 1176.0
+offset_top = 656.0
+offset_right = 1270.0
+offset_bottom = 700.0
+text = "HOLD SPACE
+TO LAUNCH"
+label_settings = ExtResource("3_ao76b")
+horizontal_alignment = 1
+
+[node name="A" type="Label" parent="GUI/ControlInstructions"]
+layout_mode = 0
+offset_left = 800.0
+offset_top = 664.0
+offset_right = 894.0
+offset_bottom = 708.0
+text = "A"
+label_settings = SubResource("LabelSettings_wmska")
+horizontal_alignment = 1
+
+[node name="D" type="Label" parent="GUI/ControlInstructions"]
+layout_mode = 0
+offset_left = 968.0
+offset_top = 664.0
+offset_right = 1062.0
+offset_bottom = 708.0
+text = "D"
+label_settings = SubResource("LabelSettings_wmska")
+horizontal_alignment = 1
+
+[node name="PauseMenu" parent="GUI" instance=ExtResource("9_exwhk")]
+visible = false
+
+[node name="Pinball" parent="." instance=ExtResource("2_ecngn")]
+position = Vector2(568, 0)
+
+[node name="Banner" type="Node2D" parent="."]
+position = Vector2(314, 352)
+
+[node name="Sun" type="AnimatedSprite2D" parent="Banner"]
+position = Vector2(112, 96)
+scale = Vector2(8, 8)
+sprite_frames = SubResource("SpriteFrames_n4nx1")
+autoplay = "default"
+frame_progress = 0.696819
+
+[node name="RobsonGo" type="Sprite2D" parent="Banner"]
+position = Vector2(128, 232)
+scale = Vector2(8, 8)
+texture = ExtResource("5_0ot0k")
+
+[node name="Robson" type="AnimatedSprite2D" parent="Banner"]
+position = Vector2(128, 128)
+scale = Vector2(8, 8)
+sprite_frames = SubResource("SpriteFrames_16era")
+autoplay = "default"
+
+[node name="Teleport" type="Node2D" parent="."]
+position = Vector2(448, 536)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Teleport"]
+position = Vector2(64, 64)
+scale = Vector2(8, 8)
+sprite_frames = SubResource("SpriteFrames_r5goo")
+frame = 1
+frame_progress = 0.536674
+
+[node name="Area2D" type="Area2D" parent="Teleport"]
+collision_layer = 64
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Teleport/Area2D"]
+position = Vector2(64, 64)
+shape = SubResource("RectangleShape2D_lox7g")
+
+[node name="Label" type="Label" parent="Teleport"]
+visible = false
+offset_top = 120.0
+offset_right = 128.0
+offset_bottom = 158.0
+text = "ENTER!"
+label_settings = SubResource("LabelSettings_2mnu4")
+horizontal_alignment = 1
+
+[node name="Player" parent="." instance=ExtResource("7_w0xtj")]
+position = Vector2(-32, 600)
+collision_layer = 32
+collision_mask = 64
+
+[node name="Markers" type="Node2D" parent="."]
+
+[node name="IntroStop" type="Marker2D" parent="Markers"]
+position = Vector2(320, 600)
+
+[node name="Teleporter" type="Marker2D" parent="Markers"]
+position = Vector2(512, 600)
+
+[node name="PlayerArea" type="StaticBody2D" parent="."]
+position = Vector2(-56, 645)
+collision_layer = 64
+collision_mask = 32
+
+[node name="R" type="CollisionShape2D" parent="PlayerArea"]
+position = Vector2(664, 11)
+rotation = -1.5708
+shape = SubResource("WorldBoundaryShape2D_8fw2x")
+
+[node name="B" type="CollisionShape2D" parent="PlayerArea"]
+position = Vector2(384, -11)
+shape = SubResource("WorldBoundaryShape2D_x3e22")
+
+[node name="L" type="CollisionShape2D" parent="PlayerArea"]
+position = Vector2(56, 11)
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_6hlgs")

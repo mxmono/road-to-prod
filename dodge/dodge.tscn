@@ -1,0 +1,247 @@
+[gd_scene load_steps=31 format=3 uid="uid://d2gjm73jjkktu"]
+
+[ext_resource type="Texture2D" uid="uid://db0tmdymfrteg" path="res://texture/key_w.png" id="1_bdo3b"]
+[ext_resource type="Script" path="res://dodge/dodge.gd" id="1_dyfyg"]
+[ext_resource type="Script" path="res://dodge/dodge_buttons.gd" id="2_1olts"]
+[ext_resource type="Texture2D" uid="uid://bjbjcul5daogw" path="res://texture/key_w2.png" id="2_p4sb6"]
+[ext_resource type="Texture2D" uid="uid://dr3nkn55klqwe" path="res://texture/key_d.png" id="3_fvbck"]
+[ext_resource type="Texture2D" uid="uid://c8ilmdkv4bshh" path="res://texture/key_d2.png" id="4_bo4le"]
+[ext_resource type="Texture2D" uid="uid://ci7ukgtqaq5ly" path="res://texture/key_s.png" id="5_oonxd"]
+[ext_resource type="Texture2D" uid="uid://eyjwrff8b7a3" path="res://texture/key_w3.png" id="5_vujbh"]
+[ext_resource type="Texture2D" uid="uid://in58vhljklfv" path="res://texture/key_s2.png" id="6_fj75n"]
+[ext_resource type="PackedScene" uid="uid://cxnlnesppg801" path="res://player.tscn" id="7_gmemk"]
+[ext_resource type="Texture2D" uid="uid://dn11fn36slj2" path="res://texture/key_s3.png" id="7_o5ed5"]
+[ext_resource type="Texture2D" uid="uid://cbrywafksiol3" path="res://texture/key_d3.png" id="8_7w14i"]
+[ext_resource type="PackedScene" uid="uid://b81yxhdge3tgr" path="res://dodge/stakeholder.tscn" id="13_qrym0"]
+[ext_resource type="FontFile" uid="uid://8hhosy45djqn" path="res://fonts/mago3.ttf" id="14_dw6pi"]
+[ext_resource type="PackedScene" uid="uid://dpw5tr22f2x1l" path="res://pause_menu.tscn" id="15_as6en"]
+[ext_resource type="PackedScene" uid="uid://b637t5bpdi1j3" path="res://dodge/bullet.tscn" id="15_lmkm8"]
+[ext_resource type="Script" path="res://dodge/bullet.gd" id="16_hqtjq"]
+[ext_resource type="PackedScene" uid="uid://dkyiyuk3xulfl" path="res://dialog.tscn" id="16_kacvc"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_t4qrx"]
+allow_unpress = true
+
+[sub_resource type="InputEventKey" id="InputEventKey_s88a4"]
+device = -1
+keycode = 87
+unicode = 119
+
+[sub_resource type="Shortcut" id="Shortcut_f1p6l"]
+events = [SubResource("InputEventKey_s88a4")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_ayhl6"]
+device = -1
+keycode = 68
+unicode = 100
+
+[sub_resource type="Shortcut" id="Shortcut_xds40"]
+events = [SubResource("InputEventKey_ayhl6")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_i1qat"]
+device = -1
+keycode = 83
+unicode = 115
+
+[sub_resource type="Shortcut" id="Shortcut_eh2db"]
+events = [SubResource("InputEventKey_i1qat")]
+
+[sub_resource type="LabelSettings" id="LabelSettings_726bd"]
+font = ExtResource("14_dw6pi")
+font_size = 378
+
+[sub_resource type="LabelSettings" id="LabelSettings_f57f7"]
+font = ExtResource("14_dw6pi")
+font_size = 48
+font_color = Color(0.969863, 0.873656, 0.70959, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jymm8"]
+resource_local_to_scene = true
+font = ExtResource("14_dw6pi")
+font_size = 128
+font_color = Color(0.877178, 0.610118, 0.348929, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_d5o0h"]
+font = ExtResource("14_dw6pi")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_m7yll"]
+font = ExtResource("14_dw6pi")
+font_size = 48
+
+[node name="Dodge" type="Node2D"]
+script = ExtResource("1_dyfyg")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="BG" type="ColorRect" parent="."]
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.507945, 0.27612, 0.260094, 1)
+metadata/_edit_lock_ = true
+
+[node name="DodgeButtons" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_1olts")
+
+[node name="W" type="TextureButton" parent="DodgeButtons"]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 176.0
+offset_right = 272.0
+offset_bottom = 272.0
+toggle_mode = true
+button_group = SubResource("ButtonGroup_t4qrx")
+shortcut = SubResource("Shortcut_f1p6l")
+texture_normal = ExtResource("1_bdo3b")
+texture_pressed = ExtResource("2_p4sb6")
+texture_disabled = ExtResource("5_vujbh")
+texture_focused = ExtResource("1_bdo3b")
+stretch_mode = 4
+
+[node name="D" type="TextureButton" parent="DodgeButtons"]
+layout_mode = 0
+offset_left = 368.0
+offset_top = 368.0
+offset_right = 464.0
+offset_bottom = 464.0
+toggle_mode = true
+button_group = SubResource("ButtonGroup_t4qrx")
+shortcut = SubResource("Shortcut_xds40")
+texture_normal = ExtResource("3_fvbck")
+texture_pressed = ExtResource("4_bo4le")
+texture_disabled = ExtResource("8_7w14i")
+texture_focused = ExtResource("3_fvbck")
+stretch_mode = 4
+
+[node name="S" type="TextureButton" parent="DodgeButtons"]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 560.0
+offset_right = 272.0
+offset_bottom = 656.0
+toggle_mode = true
+button_group = SubResource("ButtonGroup_t4qrx")
+shortcut = SubResource("Shortcut_eh2db")
+texture_normal = ExtResource("5_oonxd")
+texture_pressed = ExtResource("6_fj75n")
+texture_disabled = ExtResource("7_o5ed5")
+texture_focused = ExtResource("5_oonxd")
+stretch_mode = 4
+
+[node name="Player" parent="." instance=ExtResource("7_gmemk")]
+position = Vector2(216, 408)
+
+[node name="Stakeholder" parent="." instance=ExtResource("13_qrym0")]
+position = Vector2(1072, 408)
+scale = Vector2(8, 8)
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="Countdown" type="Label" parent="GUI"]
+offset_left = 608.0
+offset_top = 240.0
+offset_right = 832.0
+offset_bottom = 645.0
+text = "3"
+label_settings = SubResource("LabelSettings_726bd")
+
+[node name="Instructions" type="Label" parent="GUI"]
+offset_left = 360.0
+offset_top = 112.0
+offset_right = 1256.0
+offset_bottom = 191.0
+text = "SELECT WHERE TO DODGE BEFORE STAKEHOLDER FIRES"
+label_settings = SubResource("LabelSettings_f57f7")
+horizontal_alignment = 2
+autowrap_mode = 3
+
+[node name="StageName" type="Label" parent="GUI"]
+offset_left = 408.0
+offset_top = 16.0
+offset_right = 1272.0
+offset_bottom = 118.0
+text = "DODGE THE BULLET"
+label_settings = SubResource("LabelSettings_jymm8")
+horizontal_alignment = 2
+
+[node name="Stats" type="Label" parent="GUI"]
+offset_left = 440.0
+offset_top = 8.0
+offset_right = 530.0
+offset_bottom = 34.0
+text = "ROUND 1"
+label_settings = SubResource("LabelSettings_d5o0h")
+
+[node name="StakeholderAppeared" type="Label" parent="GUI"]
+offset_left = 936.0
+offset_top = 551.0
+offset_right = 1158.0
+offset_bottom = 630.0
+text = "STAKEHOLDER
+APPEARED!!"
+label_settings = SubResource("LabelSettings_m7yll")
+horizontal_alignment = 1
+
+[node name="PauseMenu" parent="GUI" instance=ExtResource("15_as6en")]
+visible = false
+
+[node name="Dialog" parent="GUI" instance=ExtResource("16_kacvc")]
+visible = false
+position = Vector2(576, 540)
+
+[node name="Bullet" parent="." instance=ExtResource("15_lmkm8")]
+position = Vector2(960, 408)
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("16_hqtjq")
+
+[node name="Markers" type="Node2D" parent="."]
+
+[node name="Intro" type="Marker2D" parent="Markers"]
+position = Vector2(-120, 408)
+
+[node name="Start" type="Marker2D" parent="Markers"]
+position = Vector2(216, 408)
+
+[node name="W" type="Marker2D" parent="Markers"]
+position = Vector2(150, 216)
+
+[node name="S" type="Marker2D" parent="Markers"]
+position = Vector2(150, 600)
+
+[node name="D" type="Marker2D" parent="Markers"]
+position = Vector2(345, 408)
+
+[node name="Gun" type="Marker2D" parent="Markers"]
+position = Vector2(960, 408)
+
+[node name="Animation" type="Node2D" parent="Markers"]
+
+[node name="StakeholderIn1" type="Marker2D" parent="Markers/Animation"]
+position = Vector2(1435, 68)
+
+[node name="StakeholderIn2" type="Marker2D" parent="Markers/Animation"]
+position = Vector2(1318, 782)
+
+[node name="StakeholderIn3" type="Marker2D" parent="Markers/Animation"]
+position = Vector2(1508, 408)
+
+[node name="StakeholderOut1" type="Marker2D" parent="Markers/Animation"]
+position = Vector2(857, 602)
+
+[node name="StakeholderOut2" type="Marker2D" parent="Markers/Animation"]
+position = Vector2(772, 214)
+
+[node name="StakeholderOut3" type="Marker2D" parent="Markers/Animation"]
+position = Vector2(1072, 408)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(1, 1, 1, 0)
+metadata/_edit_lock_ = true

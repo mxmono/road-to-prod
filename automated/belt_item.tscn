@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://wctue1n42g0e"]
+
+[ext_resource type="Script" path="res://automated/belt_item.gd" id="1_jsotp"]
+[ext_resource type="Texture2D" uid="uid://bxxjl7ur7j7sx" path="res://texture/totebase.png" id="2_phexo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0baod"]
+size = Vector2(4, 4)
+
+[node name="BeltItem" type="Area2D"]
+collision_layer = 2
+script = ExtResource("1_jsotp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_phexo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0baod")

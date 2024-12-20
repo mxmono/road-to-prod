@@ -1,0 +1,96 @@
+[gd_scene load_steps=11 format=3 uid="uid://njeib2q2o54k"]
+
+[ext_resource type="Texture2D" uid="uid://di7i2ykktdyqk" path="res://texture/celery.png" id="1_erpeh"]
+[ext_resource type="Script" path="res://platformer/celery_worker.gd" id="1_gf24c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_adhue"]
+size = Vector2(46.5, 62.25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pgitw"]
+atlas = ExtResource("1_erpeh")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ff3c"]
+atlas = ExtResource("1_erpeh")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2bl25"]
+atlas = ExtResource("1_erpeh")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1s6j"]
+atlas = ExtResource("1_erpeh")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5pca3"]
+atlas = ExtResource("1_erpeh")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nduiq"]
+atlas = ExtResource("1_erpeh")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jtljt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pgitw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ff3c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2bl25")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1s6j")
+}],
+"loop": true,
+"name": &"hit",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5pca3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nduiq")
+}],
+"loop": true,
+"name": &"win",
+"speed": 3.0
+}]
+
+[node name="CeleryWorker" type="RigidBody2D"]
+collision_layer = 16
+mass = 0.5
+gravity_scale = 0.1
+linear_velocity = Vector2(0, 30)
+script = ExtResource("1_gf24c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_adhue")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 30)
+sprite_frames = SubResource("SpriteFrames_jtljt")
+frame_progress = 0.570104
+offset = Vector2(0, -30)
+
+[node name="Area2D" type="Area2D" parent="AnimatedSprite2D"]
+position = Vector2(0, -30)
+collision_layer = 16
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Area2D"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_adhue")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0

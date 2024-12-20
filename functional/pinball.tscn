@@ -1,0 +1,541 @@
+[gd_scene load_steps=55 format=3 uid="uid://c3urux6oevdr7"]
+
+[ext_resource type="Texture2D" uid="uid://dupx5y5feg3du" path="res://texture/pintable.png" id="1_58qv8"]
+[ext_resource type="Script" path="res://functional/pinball.gd" id="1_hg476"]
+[ext_resource type="Script" path="res://functional/collector.gd" id="1_vndl6"]
+[ext_resource type="Texture2D" uid="uid://b3dkqse0hx774" path="res://texture/tire.png" id="2_8rqmv"]
+[ext_resource type="Script" path="res://functional/spring.gd" id="2_bfg6r"]
+[ext_resource type="PackedScene" uid="uid://co1x8lis4ojfw" path="res://player_ball.tscn" id="2_cwiho"]
+[ext_resource type="Texture2D" uid="uid://clucc7s7wlifa" path="res://texture/tunnel.png" id="2_ehs3k"]
+[ext_resource type="Texture2D" uid="uid://dkud3b0ll4flw" path="res://texture/springfull.png" id="2_r60ej"]
+[ext_resource type="PackedScene" uid="uid://d12tscn8ybvfc" path="res://functional/flipper.tscn" id="3_p5i24"]
+[ext_resource type="Texture2D" uid="uid://t2d7u3wjykj5" path="res://texture/direction-lights.png" id="6_ufutw"]
+[ext_resource type="PackedScene" uid="uid://copakdgnhjt01" path="res://functional/pinball_target.tscn" id="7_v3xl1"]
+[ext_resource type="Texture2D" uid="uid://cq84fowqsgfhj" path="res://texture/pinlights-small.png" id="8_ws35p"]
+[ext_resource type="Texture2D" uid="uid://cirs7svf5lgcc" path="res://texture/pinball-portal.png" id="9_spn6d"]
+[ext_resource type="Texture2D" uid="uid://cjdwhxux0t0ov" path="res://texture/robsonball.png" id="10_qox31"]
+[ext_resource type="FontFile" uid="uid://ds7bt8fh72gsp" path="res://fonts/mago1.ttf" id="11_qa10n"]
+[ext_resource type="FontFile" uid="uid://8hhosy45djqn" path="res://fonts/mago3.ttf" id="12_ff8th"]
+[ext_resource type="Texture2D" uid="uid://c8sw3urxdqcb0" path="res://texture/pinball-suck.png" id="13_v33vh"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rs2bu"]
+rough = true
+bounce = 1.0
+absorbent = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t4r44"]
+size = Vector2(482, 196)
+
+[sub_resource type="LabelSettings" id="LabelSettings_p3kmk"]
+font = ExtResource("12_ff8th")
+font_size = 64
+font_color = Color(1, 1, 1, 0.5)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vhgic"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3q6um"]
+radius = 17.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ia177"]
+friction = 0.2
+bounce = 0.7
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tvwso"]
+friction = 0.1
+bounce = 1.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4i6hd"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wspaq"]
+friction = 0.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_uuq2g"]
+friction = 0.0
+bounce = 0.4
+absorbent = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2u2na"]
+size = Vector2(28, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_igsjh"]
+atlas = ExtResource("6_ufutw")
+region = Rect2(0, 0, 14, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_diue0"]
+atlas = ExtResource("6_ufutw")
+region = Rect2(14, 0, 14, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1rfed"]
+atlas = ExtResource("6_ufutw")
+region = Rect2(28, 0, 14, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7r50"]
+atlas = ExtResource("6_ufutw")
+region = Rect2(42, 0, 14, 27)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jba2c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_igsjh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_diue0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1rfed")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n7r50")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rtexf"]
+atlas = ExtResource("8_ws35p")
+region = Rect2(0, 0, 2, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_skf4u"]
+atlas = ExtResource("8_ws35p")
+region = Rect2(2, 0, 2, 4)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rntho"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rtexf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_skf4u")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_77ugk"]
+atlas = ExtResource("9_spn6d")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xfcuy"]
+atlas = ExtResource("9_spn6d")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3u2m"]
+atlas = ExtResource("9_spn6d")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nc6xw"]
+atlas = ExtResource("9_spn6d")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tn4ve"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_77ugk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xfcuy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r3u2m")
+}],
+"loop": false,
+"name": &"open",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nc6xw")
+}],
+"loop": false,
+"name": &"still",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_udnoe"]
+atlas = ExtResource("9_spn6d")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wc6d6"]
+atlas = ExtResource("9_spn6d")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6nsm0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_udnoe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wc6d6")
+}],
+"loop": true,
+"name": &"flash",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4a1fc"]
+radius = 52.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_8m4y1"]
+line_spacing = -8.0
+font = ExtResource("11_qa10n")
+font_size = 32
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pnwi3"]
+radius = 22.0907
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6rcsp"]
+atlas = ExtResource("13_v33vh")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gv8fp"]
+atlas = ExtResource("13_v33vh")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4fmmf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6rcsp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gv8fp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ap7ya"]
+friction = 0.1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kp3v6"]
+atlas = ExtResource("2_8rqmv")
+region = Rect2(0, 0, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fo3sa"]
+atlas = ExtResource("2_8rqmv")
+region = Rect2(13, 0, 13, 13)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dvsuq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kp3v6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fo3sa")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Pinball" type="Node2D"]
+script = ExtResource("1_hg476")
+
+[node name="Collector" type="StaticBody2D" parent="."]
+collision_mask = 4
+physics_material_override = SubResource("PhysicsMaterial_rs2bu")
+script = ExtResource("1_vndl6")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collector"]
+polygon = PackedVector2Array(257, 720, 275, 851, 375, 851, 384, 719, 437, 719, 442, 903, 204, 904, 219, 720)
+
+[node name="Area2D" type="Area2D" parent="Collector"]
+position = Vector2(224, 720)
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collector/Area2D"]
+position = Vector2(97, 127)
+shape = SubResource("RectangleShape2D_t4r44")
+
+[node name="Table" type="StaticBody2D" parent="."]
+collision_mask = 4
+
+[node name="Pintable" type="Sprite2D" parent="Table"]
+position = Vector2(360, 360)
+scale = Vector2(4, 4)
+texture = ExtResource("1_58qv8")
+
+[node name="CollisionLeft" type="CollisionPolygon2D" parent="Table"]
+polygon = PackedVector2Array(167, 674, 132, 674, 132, 531, 136, 531, 139, 521, 147, 512, 159, 506, 176, 503, 176, 455, 180, 452, 182, 444, 188, 439, 188, 428, 174, 405, 163, 380, 153, 350, 147, 322, 143, 292, 141, 275, 140, 188, 144, 186, 147, 159, 155, 139, 161, 121, 170, 107, 184, 91, 200, 76, 220, 62, 238, 51, 259, 43, 280, 36, 299, 33, 324, 31, 350, -82, 78, 0, 78, 720, 257, 720, 255, 715, 239, 705, 175, 665, 167, 660)
+
+[node name="CollisionRight" type="CollisionPolygon2D" parent="Table"]
+position = Vector2(640, 0)
+scale = Vector2(-1, 1)
+polygon = PackedVector2Array(167, 674, 132, 674, 132, 535, 136, 527, 144, 517, 153, 511, 163, 506, 176, 504, 176, 452, 180, 449, 182, 444, 188, 440, 188, 433, 187, 428, 175, 404, 167, 388, 159, 372, 151, 344, 146, 319, 143, 288, 140, 284, 141, 189, 155, 133, 151, 129, 136, 151, 126, 176, 114, 214, 114, 416, 114, 720, 257, 720, 255, 716, 238, 706, 171, 662, 167, 660)
+
+[node name="CollisionTube" type="CollisionPolygon2D" parent="Table"]
+polygon = PackedVector2Array(324, 31, 380, 32, 411, 34, 466, 58, 496, 85, 525, 123, 546, 170, 557, 209, 558, 731, 591, 731, 592, 0, 278, -79)
+
+[node name="EntranceBlock" type="CollisionPolygon2D" parent="Table"]
+polygon = PackedVector2Array(485, 134, 472, 110, 454, 87, 432, 68, 402, 50, 368, 32, 444, 19, 548, 121)
+disabled = true
+
+[node name="EntranceArea" type="Area2D" parent="Table"]
+collision_mask = 4
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Table/EntranceArea"]
+polygon = PackedVector2Array(223, 59, 294, 33, 369, 77, 450, 134, 478, 176, 489, 216, 302, 187, 261.522, 121.415)
+
+[node name="Stats" type="Label" parent="."]
+offset_left = 258.0
+offset_top = 385.0
+offset_right = 382.0
+offset_bottom = 510.0
+text = "0/5"
+label_settings = SubResource("LabelSettings_p3kmk")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Props" type="Node2D" parent="."]
+
+[node name="Hard" type="StaticBody2D" parent="Props"]
+collision_mask = 4
+
+[node name="RestLeft" type="CollisionPolygon2D" parent="Props/Hard"]
+polygon = PackedVector2Array(160, 545, 160, 619, 240, 670, 253, 672, 247, 650, 176, 606, 172, 600.827, 172, 545, 167, 540, 166, 540)
+
+[node name="RestRight" type="CollisionPolygon2D" parent="Props/Hard"]
+polygon = PackedVector2Array(468, 545, 474, 540, 480, 545, 478, 619, 402, 669, 392, 672, 387, 667, 388, 653, 465, 605, 468, 599)
+
+[node name="LeftUpper" type="CollisionPolygon2D" parent="Props/Hard"]
+polygon = PackedVector2Array(184, 229, 183, 241, 181, 264, 184, 286, 192, 319, 210, 354, 222, 370, 224, 378, 223, 387, 215, 391, 207, 386, 198, 370, 187, 346, 177, 307, 173, 267, 178, 236, 181, 228)
+
+[node name="Bouncers" type="StaticBody2D" parent="Props"]
+collision_mask = 4
+physics_material_override = SubResource("PhysicsMaterial_vhgic")
+
+[node name="Left" type="CollisionShape2D" parent="Props/Bouncers"]
+position = Vector2(282, 226)
+shape = SubResource("CircleShape2D_3q6um")
+
+[node name="Right" type="CollisionShape2D" parent="Props/Bouncers"]
+position = Vector2(346, 202)
+shape = SubResource("CircleShape2D_3q6um")
+
+[node name="Bottom" type="CollisionShape2D" parent="Props/Bouncers"]
+position = Vector2(330, 270)
+shape = SubResource("CircleShape2D_3q6um")
+
+[node name="Bouncy" type="StaticBody2D" parent="Props"]
+collision_mask = 4
+physics_material_override = SubResource("PhysicsMaterial_ia177")
+
+[node name="BumperLeft" type="CollisionPolygon2D" parent="Props/Bouncy"]
+polygon = PackedVector2Array(200, 538, 204, 535, 208, 538, 236, 593, 236, 603, 233, 604, 228, 604, 200, 585)
+
+[node name="BumperRight" type="CollisionPolygon2D" parent="Props/Bouncy"]
+polygon = PackedVector2Array(440, 538, 440, 587, 416, 602, 404, 604, 404, 591, 432, 538, 436, 536)
+
+[node name="Top1" type="CollisionPolygon2D" parent="Props/Bouncy"]
+position = Vector2(-20, -11)
+polygon = PackedVector2Array(280, 123, 285, 101, 296, 98, 296, 164, 292, 169, 280, 165)
+
+[node name="Top2" type="CollisionPolygon2D" parent="Props/Bouncy"]
+position = Vector2(0, -35)
+polygon = PackedVector2Array(336, 116, 344.446, 111, 354, 115, 354, 152, 342, 152, 336, 148)
+
+[node name="GutterLeft" type="CollisionPolygon2D" parent="Props/Bouncy"]
+polygon = PackedVector2Array(132, 641, 149, 660, 167, 660, 167, 674, 132, 674)
+
+[node name="GutterRight" type="CollisionPolygon2D" parent="Props/Bouncy"]
+polygon = PackedVector2Array(472, 660, 492, 660, 505, 644, 508, 644, 508, 676, 472, 676)
+
+[node name="LeftUpper2" type="CollisionPolygon2D" parent="Props/Bouncy"]
+polygon = PackedVector2Array(228, 208, 231, 216, 232, 232, 239, 256, 244, 272, 256, 288, 267, 301, 275, 313, 275, 319, 272, 327, 264, 333, 256, 335, 248, 333, 239, 327, 231, 315, 226, 304, 223, 292, 220, 273, 221, 256, 222, 225, 225, 207, 226, 204)
+
+[node name="BumperLeft" type="StaticBody2D" parent="Props"]
+physics_material_override = SubResource("PhysicsMaterial_tvwso")
+constant_linear_velocity = Vector2(100, -100)
+
+[node name="Left" type="CollisionPolygon2D" parent="Props/BumperLeft"]
+position = Vector2(-3, 3)
+polygon = PackedVector2Array(211, 556, 227, 587, 237, 587, 213, 540)
+
+[node name="BumperRight" type="StaticBody2D" parent="Props"]
+physics_material_override = SubResource("PhysicsMaterial_4i6hd")
+constant_linear_velocity = Vector2(-100, -100)
+
+[node name="Right" type="CollisionPolygon2D" parent="Props/BumperRight"]
+polygon = PackedVector2Array(428, 545, 409, 582, 419, 586, 437, 552)
+
+[node name="Tunnel" type="StaticBody2D" parent="Props"]
+physics_material_override = SubResource("PhysicsMaterial_wspaq")
+constant_linear_velocity = Vector2(0, -50)
+
+[node name="TunnelLeft" type="CollisionPolygon2D" parent="Props/Tunnel"]
+polygon = PackedVector2Array(380, 306, 391, 316, 401, 298, 410, 276, 410, 245, 410, 205, 403, 188, 397, 182, 397, 266, 390, 287)
+
+[node name="TunnelRight" type="CollisionPolygon2D" parent="Props/Tunnel"]
+polygon = PackedVector2Array(410, 373, 428, 344, 442, 312, 449, 274, 449, 242, 449, 195, 438, 177, 416, 156, 397, 143, 397, 131, 416, 141, 447, 171, 458, 191, 460, 200, 460, 315, 447, 355, 430, 384, 412, 385)
+
+[node name="TunnelExit" type="CollisionPolygon2D" parent="Props/Tunnel"]
+rotation = -1.5708
+polygon = PackedVector2Array(-132, 397, -244, 397, -242, 447, -176, 446)
+one_way_collision = true
+
+[node name="Spring" type="AnimatableBody2D" parent="Props"]
+position = Vector2(540, 688)
+collision_mask = 4
+physics_material_override = SubResource("PhysicsMaterial_uuq2g")
+script = ExtResource("2_bfg6r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Props/Spring"]
+position = Vector2(2, -0.5)
+shape = SubResource("RectangleShape2D_2u2na")
+
+[node name="Sprite2D" type="Sprite2D" parent="Props/Spring"]
+scale = Vector2(4, 4)
+texture = ExtResource("2_r60ej")
+
+[node name="DecorationBG" type="Node2D" parent="Props"]
+
+[node name="TunnelLights" type="AnimatedSprite2D" parent="Props/DecorationBG"]
+position = Vector2(412, 307)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_jba2c")
+autoplay = "default"
+frame = 1
+frame_progress = 0.380635
+
+[node name="SmallLights" type="AnimatedSprite2D" parent="Props/DecorationBG"]
+position = Vector2(383, 256)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_rntho")
+autoplay = "default"
+frame_progress = 0.318693
+
+[node name="SmallLights2" type="AnimatedSprite2D" parent="Props/DecorationBG"]
+position = Vector2(239, 486)
+scale = Vector2(-4, 4)
+sprite_frames = SubResource("SpriteFrames_rntho")
+autoplay = "default"
+frame_progress = 0.318693
+
+[node name="Collectibles" type="Node2D" parent="Props"]
+
+[node name="PinballTarget" parent="Props/Collectibles" instance=ExtResource("7_v3xl1")]
+position = Vector2(414, 432)
+
+[node name="PinballTarget2" parent="Props/Collectibles" instance=ExtResource("7_v3xl1")]
+position = Vector2(307, 133)
+
+[node name="PinballTarget3" parent="Props/Collectibles" instance=ExtResource("7_v3xl1")]
+position = Vector2(310, 328)
+
+[node name="PinballTarget4" parent="Props/Collectibles" instance=ExtResource("7_v3xl1")]
+position = Vector2(190, 392)
+
+[node name="PinballTarget5" parent="Props/Collectibles" instance=ExtResource("7_v3xl1")]
+position = Vector2(378, 174)
+
+[node name="Portal" type="Node2D" parent="Props"]
+position = Vector2(256, 384)
+
+[node name="Portal" type="AnimatedSprite2D" parent="Props/Portal"]
+position = Vector2(64, 64)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_tn4ve")
+animation = &"still"
+
+[node name="Flash" type="AnimatedSprite2D" parent="Props/Portal"]
+position = Vector2(64, 64)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_6nsm0")
+animation = &"flash"
+frame_progress = 0.572256
+
+[node name="PortalArea" type="Area2D" parent="Props/Portal"]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Props/Portal/PortalArea"]
+position = Vector2(65, 64)
+shape = SubResource("CircleShape2D_4a1fc")
+
+[node name="PlayerSprite" type="Sprite2D" parent="Props/Portal"]
+visible = false
+position = Vector2(65, 64)
+scale = Vector2(2, 2)
+texture = ExtResource("10_qox31")
+
+[node name="WinLabel" type="Label" parent="Props/Portal"]
+visible = false
+offset_left = 34.0
+offset_top = 19.0
+offset_right = 96.0
+offset_bottom = 63.0
+text = "COME
+IN"
+label_settings = SubResource("LabelSettings_8m4y1")
+horizontal_alignment = 1
+
+[node name="Suck" type="Area2D" parent="Props"]
+position = Vector2(407, 334)
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Props/Suck"]
+position = Vector2(1, -5)
+shape = SubResource("CircleShape2D_pnwi3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Props/Suck"]
+modulate = Color(1, 1, 1, 0.7)
+position = Vector2(1, -5)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_4fmmf")
+autoplay = "default"
+frame_progress = 0.752166
+
+[node name="PlayerNode" type="Node2D" parent="."]
+position = Vector2(0, -21)
+
+[node name="PlayerBall" parent="PlayerNode" instance=ExtResource("2_cwiho")]
+position = Vector2(542, 617)
+physics_material_override = SubResource("PhysicsMaterial_ap7ya")
+gravity_scale = 0.3
+
+[node name="DecorationFG" type="Node2D" parent="."]
+
+[node name="Tunnel" type="Sprite2D" parent="DecorationFG"]
+position = Vector2(420, 260)
+scale = Vector2(4, 4)
+texture = ExtResource("2_ehs3k")
+
+[node name="Tire" type="AnimatedSprite2D" parent="DecorationFG"]
+position = Vector2(409, 208)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_dvsuq")
+autoplay = "default"
+frame_progress = 0.387487
+
+[node name="Markers" type="Node2D" parent="."]
+position = Vector2(-1, 0)
+
+[node name="Spawner" type="Marker2D" parent="Markers"]
+position = Vector2(543, 596)
+
+[node name="Portal" type="Marker2D" parent="Markers"]
+position = Vector2(322, 448)
+
+[node name="PortalBottom" type="Marker2D" parent="Markers"]
+position = Vector2(322, 482)
+
+[node name="FlipperL" parent="." instance=ExtResource("3_p5i24")]
+position = Vector2(251, 664)
+rest_angle = 30.0
+
+[node name="FlipperR" parent="." instance=ExtResource("3_p5i24")]
+position = Vector2(389, 664)
+scale = Vector2(-1, 1)
+input_action = "flip_right"
+rest_angle = 30.0

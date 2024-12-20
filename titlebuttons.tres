@@ -1,0 +1,37 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://hp4o13xnk08g"]
+
+[ext_resource type="FontFile" uid="uid://ds7bt8fh72gsp" path="res://fonts/mago1.ttf" id="1_flh34"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7bbxn"]
+bg_color = Color(0.736, 0.176, 0, 0.8)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8q0ig"]
+bg_color = Color(0.52356, 0.148802, 0.127857, 0.7)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m6qy3"]
+bg_color = Color(0.227, 0.227, 0.227, 0.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fgptq"]
+bg_color = Color(0.731656, 0.208113, 0.212518, 0.843)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[resource]
+default_font = ExtResource("1_flh34")
+default_font_size = 24
+Button/font_sizes/font_size = 24
+Button/fonts/font = ExtResource("1_flh34")
+Button/styles/focus = SubResource("StyleBoxFlat_7bbxn")
+Button/styles/hover = SubResource("StyleBoxFlat_8q0ig")
+Button/styles/normal = SubResource("StyleBoxFlat_m6qy3")
+Button/styles/pressed = SubResource("StyleBoxFlat_fgptq")

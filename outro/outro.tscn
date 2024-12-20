@@ -1,0 +1,228 @@
+[gd_scene load_steps=20 format=3 uid="uid://bhnkaux8ktu3y"]
+
+[ext_resource type="Texture2D" uid="uid://7175nxlgk1bv" path="res://texture/space.png" id="1_c6ldq"]
+[ext_resource type="Script" path="res://outro/outro.gd" id="1_y32x8"]
+[ext_resource type="PackedScene" uid="uid://d30a0n68ohkwk" path="res://outro/robson_tire.tscn" id="2_1t5ci"]
+[ext_resource type="Texture2D" uid="uid://dsyuntkidglv1" path="res://texture/space-star.png" id="2_2g82h"]
+[ext_resource type="Texture2D" uid="uid://bnhdaxcxutsfp" path="res://texture/mirror-portal.png" id="4_ogm46"]
+[ext_resource type="PackedScene" uid="uid://dpw5tr22f2x1l" path="res://pause_menu.tscn" id="5_qsme7"]
+[ext_resource type="FontFile" uid="uid://8hhosy45djqn" path="res://fonts/mago3.ttf" id="6_541vk"]
+[ext_resource type="Texture2D" uid="uid://dlwh3yae0cs4f" path="res://texture/shootingstar.png" id="7_kauoi"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3demt"]
+resource_local_to_scene = true
+line_spacing = -16.0
+font = ExtResource("6_541vk")
+font_size = 128
+font_color = Color(1, 1, 1, 0.2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ktc16"]
+font = ExtResource("6_541vk")
+font_size = 48
+font_color = Color(1, 1, 1, 0.4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dpwi0"]
+atlas = ExtResource("4_ogm46")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ks7y"]
+atlas = ExtResource("4_ogm46")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xl4sf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dpwi0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ks7y")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fm8u1"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6orif"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4s7ev"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_a1ivw"]
+
+[sub_resource type="Curve" id="Curve_jooyg"]
+min_value = -1.0
+_data = [Vector2(0, -0.0882354), 0.0, 0.0, 0, 0, Vector2(0.514451, 0.338235), 1.81723, 1.81723, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="LabelSettings" id="LabelSettings_c6l75"]
+resource_local_to_scene = true
+font = ExtResource("6_541vk")
+font_size = 64
+font_color = Color(0.793291, 0.310988, 0.251564, 1)
+
+[node name="Outro" type="Node2D"]
+script = ExtResource("1_y32x8")
+
+[node name="BG" type="Node2D" parent="."]
+
+[node name="Parallax2D" type="Parallax2D" parent="BG"]
+scroll_scale = Vector2(0, 0)
+
+[node name="Space" type="Sprite2D" parent="BG/Parallax2D"]
+position = Vector2(641, 360)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("1_c6ldq")
+metadata/_edit_lock_ = true
+
+[node name="PlayArea" type="CanvasLayer" parent="."]
+
+[node name="StageName" type="Label" parent="PlayArea"]
+offset_left = 24.0
+offset_top = 16.0
+offset_right = 1038.0
+offset_bottom = 223.0
+text = "GO TO PRODUCTION"
+label_settings = SubResource("LabelSettings_3demt")
+autowrap_mode = 3
+
+[node name="Instructions" type="Label" parent="PlayArea"]
+offset_left = 27.0
+offset_top = 111.0
+offset_right = 1215.0
+offset_bottom = 190.0
+text = "ROBSON IS INVINCIBLE! SMASH THROUGH EVERYTHING!"
+label_settings = SubResource("LabelSettings_ktc16")
+autowrap_mode = 3
+
+[node name="White" type="ColorRect" parent="PlayArea"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Portal" type="AnimatedSprite2D" parent="PlayArea"]
+visible = false
+position = Vector2(1124, 177)
+scale = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_xl4sf")
+autoplay = "default"
+frame = 1
+frame_progress = 0.892703
+
+[node name="RobsonTire" parent="PlayArea" instance=ExtResource("2_1t5ci")]
+position = Vector2(237, 360)
+collision_mask = 3
+motion_mode = 1
+
+[node name="PlayerArea" type="StaticBody2D" parent="PlayArea"]
+collision_mask = 4
+
+[node name="R" type="CollisionShape2D" parent="PlayArea/PlayerArea"]
+position = Vector2(1196, 228)
+shape = SubResource("WorldBoundaryShape2D_fm8u1")
+
+[node name="L" type="CollisionShape2D" parent="PlayArea/PlayerArea"]
+position = Vector2(0, 228)
+shape = SubResource("WorldBoundaryShape2D_6orif")
+
+[node name="T" type="CollisionShape2D" parent="PlayArea/PlayerArea"]
+position = Vector2(156, 0)
+shape = SubResource("WorldBoundaryShape2D_4s7ev")
+
+[node name="B" type="CollisionShape2D" parent="PlayArea/PlayerArea"]
+position = Vector2(156, 718)
+shape = SubResource("WorldBoundaryShape2D_a1ivw")
+
+[node name="Smashables" type="CanvasLayer" parent="."]
+
+[node name="Markers" type="CanvasLayer" parent="."]
+
+[node name="Spawner" type="Marker2D" parent="Markers"]
+position = Vector2(1313, 362)
+
+[node name="BossSpawner" type="Marker2D" parent="Markers"]
+position = Vector2(1712, 362)
+
+[node name="PlayerInitial" type="Marker2D" parent="Markers"]
+position = Vector2(-206, 558)
+
+[node name="PlayerStart" type="Marker2D" parent="Markers"]
+position = Vector2(236, 360)
+
+[node name="PlayerShoot" type="Marker2D" parent="Markers"]
+position = Vector2(1206, -53)
+
+[node name="Portal" type="Marker2D" parent="Markers"]
+position = Vector2(1124, 177)
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="Stars" type="CPUParticles2D" parent="GUI"]
+position = Vector2(1312, 361)
+emitting = false
+amount = 80
+lifetime = 15.0
+preprocess = 10.0
+randomness = 0.77
+texture = ExtResource("2_2g82h")
+emission_shape = 3
+emission_rect_extents = Vector2(1, 720)
+direction = Vector2(-1, 0)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 180.0
+initial_velocity_max = 240.0
+scale_amount_max = 2.0
+hue_variation_max = 0.51
+hue_variation_curve = SubResource("Curve_jooyg")
+
+[node name="ShootingStar" type="CPUParticles2D" parent="GUI"]
+self_modulate = Color(1, 1, 1, 0.5)
+position = Vector2(776, -64)
+emitting = false
+amount = 1
+lifetime = 2.0
+speed_scale = 4.0
+randomness = 0.77
+texture = ExtResource("7_kauoi")
+emission_shape = 3
+emission_rect_extents = Vector2(1, 720)
+direction = Vector2(-1, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 480.0
+initial_velocity_max = 520.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+hue_variation_max = 0.51
+hue_variation_curve = SubResource("Curve_jooyg")
+
+[node name="PauseMenu" parent="GUI" instance=ExtResource("5_qsme7")]
+visible = false
+
+[node name="ShootingStarTimer" type="Timer" parent="GUI"]
+wait_time = 8.0
+
+[node name="ClearLabel" type="CanvasLayer" parent="."]
+
+[node name="ClearLabel" type="Label" parent="ClearLabel"]
+modulate = Color(1, 1, 1, 0)
+offset_top = 331.0
+offset_right = 1280.0
+offset_bottom = 382.0
+text = "PRODUCTION... YOU MADE IT!"
+label_settings = SubResource("LabelSettings_c6l75")
+horizontal_alignment = 1
+
+[node name="SpawnTimer" type="Timer" parent="."]
+
+[node name="StageTimer" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

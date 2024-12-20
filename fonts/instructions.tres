@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://d2c4jj5wehx1r"]
+
+[ext_resource type="FontFile" uid="uid://8hhosy45djqn" path="res://fonts/mago3.ttf" id="1_r7fyl"]
+
+[resource]
+font = ExtResource("1_r7fyl")
+font_size = 48
+font_color = Color(0.16695, 0.587209, 0.706447, 1)

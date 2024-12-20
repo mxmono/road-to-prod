@@ -1,0 +1,87 @@
+[gd_scene load_steps=12 format=3 uid="uid://b81yxhdge3tgr"]
+
+[ext_resource type="Texture2D" uid="uid://cr3qnfia5x7x3" path="res://texture/ghosty.png" id="1_bi14n"]
+[ext_resource type="Script" path="res://dodge/stakeholder.gd" id="1_qvib7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7mc8r"]
+atlas = ExtResource("1_bi14n")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_byc3q"]
+atlas = ExtResource("1_bi14n")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8hncb"]
+atlas = ExtResource("1_bi14n")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xxlah"]
+atlas = ExtResource("1_bi14n")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lsqqm"]
+atlas = ExtResource("1_bi14n")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_danu3"]
+atlas = ExtResource("1_bi14n")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xhgq2"]
+atlas = ExtResource("1_bi14n")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rdgv7"]
+atlas = ExtResource("1_bi14n")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y6jfn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7mc8r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_byc3q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8hncb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xxlah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lsqqm")
+}, {
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_danu3")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xhgq2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rdgv7")
+}],
+"loop": true,
+"name": &"stake",
+"speed": 2.0
+}]
+
+[node name="Stakeholder" type="Node2D"]
+script = ExtResource("1_qvib7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_y6jfn")
+autoplay = "default"
+frame = 1
+frame_progress = 0.143505

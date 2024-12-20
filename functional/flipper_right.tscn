@@ -1,0 +1,80 @@
+[gd_scene load_steps=7 format=3 uid="uid://cgpipw6f1tybw"]
+
+[ext_resource type="Script" path="res://functional/flipper_old.gd" id="1_0xaxp"]
+[ext_resource type="Texture2D" uid="uid://b5nsly316t82l" path="res://texture/flipper.png" id="2_acuvr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kitya"]
+radius = 1.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bp2e6"]
+friction = 0.0
+bounce = 1.0
+absorbent = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_njwkj"]
+size = Vector2(182, 77)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pypov"]
+size = Vector2(182, 56.9403)
+
+[node name="Flipper" type="Node2D"]
+script = ExtResource("1_0xaxp")
+flip_strength = 1000.0
+input_action = "flip_right"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+enabled = false
+zoom = Vector2(4, 4)
+
+[node name="Pivot" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot"]
+shape = SubResource("CircleShape2D_kitya")
+
+[node name="Polygon2D" type="Polygon2D" parent="Pivot"]
+visible = false
+polygon = PackedVector2Array(0, -1, -1, 0, 0, 1, 1, 0)
+
+[node name="Flipper" type="RigidBody2D" parent="."]
+position = Vector2(-1, 0)
+rotation = -0.523599
+collision_layer = 2
+collision_mask = 36
+mass = 0.2
+physics_material_override = SubResource("PhysicsMaterial_bp2e6")
+gravity_scale = 0.0
+can_sleep = false
+freeze_mode = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="Flipper"]
+position = Vector2(0.366025, 1.36603)
+scale = Vector2(-4, -4)
+texture = ExtResource("2_acuvr")
+offset = Vector2(8, 0)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Flipper"]
+position = Vector2(0.866025, 0.5)
+scale = Vector2(-1, -1)
+polygon = PackedVector2Array(60.4974, -7.21539, 36.0429, -11.5718, 4.66025, -11.9282, 0.901924, -7.56218, 0.964102, 6.33013, 4.76795, 12.2583, 37.0167, 12.1147, 61.4352, 8.40897, 64.7654, 4.17691, 65.2295, -3.01924)
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Flipper"]
+node_a = NodePath("..")
+node_b = NodePath("../../Pivot")
+bias = 0.9
+angular_limit_lower = -0.523599
+angular_limit_upper = 0.349066
+
+[node name="InvisibleRest" type="StaticBody2D" parent="."]
+position = Vector2(-9, -26)
+collision_layer = 32
+collision_mask = 2
+
+[node name="Floor" type="CollisionShape2D" parent="InvisibleRest"]
+position = Vector2(21, 79)
+rotation = -0.523599
+shape = SubResource("RectangleShape2D_njwkj")
+
+[node name="Ceiling" type="CollisionShape2D" parent="InvisibleRest"]
+position = Vector2(10, -28)
+rotation = 0.698132
+shape = SubResource("RectangleShape2D_pypov")

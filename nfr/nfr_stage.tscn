@@ -1,0 +1,171 @@
+[gd_scene load_steps=16 format=3 uid="uid://douk8lwguwlf1"]
+
+[ext_resource type="Script" path="res://nfr/nfr_stage.gd" id="1_dwoi4"]
+[ext_resource type="Texture2D" uid="uid://debg3isk2br6o" path="res://texture/open.png" id="1_qm646"]
+[ext_resource type="Texture2D" uid="uid://dr3nkn55klqwe" path="res://texture/key_d.png" id="2_mx42w"]
+[ext_resource type="Texture2D" uid="uid://c8ilmdkv4bshh" path="res://texture/key_d2.png" id="3_0iss0"]
+[ext_resource type="Texture2D" uid="uid://cbrywafksiol3" path="res://texture/key_d3.png" id="4_gm26r"]
+[ext_resource type="FontFile" uid="uid://8hhosy45djqn" path="res://fonts/mago3.ttf" id="6_f4xu5"]
+[ext_resource type="Script" path="res://dodge/stop_watch.gd" id="7_2a7w3"]
+[ext_resource type="FontFile" uid="uid://dgvxpoi0ohhb1" path="res://fonts/mago2.ttf" id="8_ab2vd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5t1pj"]
+size = Vector2(18, 82)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1mdow"]
+size = Vector2(16, 18)
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_v2bou"]
+allow_unpress = true
+
+[sub_resource type="InputEventKey" id="InputEventKey_ayhl6"]
+device = -1
+keycode = 68
+unicode = 100
+
+[sub_resource type="Shortcut" id="Shortcut_tpv8p"]
+events = [SubResource("InputEventKey_ayhl6")]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qi4oq"]
+font = ExtResource("6_f4xu5")
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_e5x0s"]
+line_spacing = -8.0
+font = ExtResource("8_ab2vd")
+font_size = 32
+
+[node name="NFRStage" type="Node2D"]
+script = ExtResource("1_dwoi4")
+
+[node name="Block" type="StaticBody2D" parent="."]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Block"]
+position = Vector2(-1, 31)
+shape = SubResource("RectangleShape2D_5t1pj")
+
+[node name="Start" type="Area2D" parent="."]
+collision_mask = 4
+
+[node name="Sprite" type="Sprite2D" parent="Start"]
+position = Vector2(32, 32)
+scale = Vector2(4, 4)
+texture = ExtResource("1_qm646")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Start"]
+position = Vector2(47, 32)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_1mdow")
+
+[node name="LetterZone" type="ColorRect" parent="."]
+offset_left = 128.0
+offset_right = 960.0
+offset_bottom = 64.0
+color = Color(0.656919, 0.68926, 0.353337, 1)
+
+[node name="StartLine" type="ColorRect" parent="LetterZone"]
+visible = false
+layout_mode = 0
+offset_left = 640.0
+offset_right = 648.0
+offset_bottom = 64.0
+color = Color(0.681515, 0.258113, 0.340856, 1)
+
+[node name="StartMarker" type="Marker2D" parent="LetterZone"]
+
+[node name="ProgressLine" type="ColorRect" parent="LetterZone"]
+layout_mode = 0
+offset_right = 832.0
+color = Color(0.368587, 0.618155, 0.397642, 1)
+
+[node name="Container" type="MarginContainer" parent="LetterZone"]
+layout_mode = 0
+offset_right = 704.0
+offset_bottom = 64.0
+theme_override_constants/margin_left = 64
+
+[node name="VBoxContainer" type="HBoxContainer" parent="LetterZone/Container"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="D" type="TextureButton" parent="LetterZone/Container/VBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_v2bou")
+shortcut = SubResource("Shortcut_tpv8p")
+texture_normal = ExtResource("2_mx42w")
+texture_pressed = ExtResource("3_0iss0")
+texture_disabled = ExtResource("4_gm26r")
+texture_focused = ExtResource("2_mx42w")
+stretch_mode = 4
+
+[node name="D2" type="TextureButton" parent="LetterZone/Container/VBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_v2bou")
+shortcut = SubResource("Shortcut_tpv8p")
+texture_normal = ExtResource("2_mx42w")
+texture_pressed = ExtResource("3_0iss0")
+texture_disabled = ExtResource("4_gm26r")
+texture_focused = ExtResource("2_mx42w")
+stretch_mode = 4
+
+[node name="D3" type="TextureButton" parent="LetterZone/Container/VBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_v2bou")
+shortcut = SubResource("Shortcut_tpv8p")
+texture_normal = ExtResource("2_mx42w")
+texture_pressed = ExtResource("3_0iss0")
+texture_disabled = ExtResource("4_gm26r")
+texture_focused = ExtResource("2_mx42w")
+stretch_mode = 4
+
+[node name="D4" type="TextureButton" parent="LetterZone/Container/VBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_v2bou")
+shortcut = SubResource("Shortcut_tpv8p")
+texture_normal = ExtResource("2_mx42w")
+texture_pressed = ExtResource("3_0iss0")
+texture_disabled = ExtResource("4_gm26r")
+texture_focused = ExtResource("2_mx42w")
+stretch_mode = 4
+
+[node name="StopWatch" type="Label" parent="."]
+offset_left = 824.0
+offset_right = 944.0
+offset_bottom = 64.0
+text = "0.97s"
+label_settings = SubResource("LabelSettings_qi4oq")
+vertical_alignment = 1
+script = ExtResource("7_2a7w3")
+
+[node name="Hint" type="Node2D" parent="."]
+position = Vector2(960, 0)
+
+[node name="StartTyping" type="Label" parent="Hint"]
+offset_left = 32.0
+offset_top = -59.0
+offset_right = 115.0
+offset_bottom = 9.0
+text = "GET READY"
+label_settings = SubResource("LabelSettings_e5x0s")
+vertical_alignment = 2
+
+[node name="Indicator" type="Node2D" parent="Hint"]
+
+[node name="Triangle" type="Polygon2D" parent="Hint/Indicator"]
+position = Vector2(18, 0)
+scale = Vector2(1.03059, 1.85852)
+polygon = PackedVector2Array(4, -3, 0, 0, 4, 3)
+
+[node name="Line" type="Line2D" parent="Hint/Indicator"]
+position = Vector2(1, 1)
+points = PackedVector2Array(0, -1, 18, -1)
+width = 1.0

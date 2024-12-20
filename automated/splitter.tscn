@@ -1,0 +1,161 @@
+[gd_scene load_steps=16 format=3 uid="uid://426vxcjvrnhc"]
+
+[ext_resource type="Script" path="res://automated/splitter.gd" id="1_6ucvg"]
+[ext_resource type="Texture2D" uid="uid://cgtw0lqw8i76g" path="res://texture/belt-splitter.png" id="1_i3wvm"]
+[ext_resource type="Texture2D" uid="uid://cm8lfg5dptwgf" path="res://texture/belts.png" id="2_q6jec"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_08ofd"]
+atlas = ExtResource("2_q6jec")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5x2vp"]
+atlas = ExtResource("2_q6jec")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wcw4k"]
+atlas = ExtResource("2_q6jec")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ckdi7"]
+atlas = ExtResource("2_q6jec")
+region = Rect2(0, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uhinu"]
+atlas = ExtResource("2_q6jec")
+region = Rect2(0, 176, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ufncw"]
+atlas = ExtResource("2_q6jec")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rbcyp"]
+atlas = ExtResource("2_q6jec")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n510v"]
+atlas = ExtResource("2_q6jec")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jprpp"]
+atlas = ExtResource("2_q6jec")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jynfn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_08ofd")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5x2vp")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wcw4k")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ckdi7")
+}],
+"loop": true,
+"name": &"right_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uhinu")
+}],
+"loop": true,
+"name": &"right_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ufncw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rbcyp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n510v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jprpp")
+}],
+"loop": false,
+"name": &"up",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ssif5"]
+size = Vector2(8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vca32"]
+size = Vector2(10, 10)
+
+[node name="Splitter" type="Area2D"]
+script = ExtResource("1_6ucvg")
+from_direction = 0
+
+[node name="Markers" type="Node2D" parent="."]
+
+[node name="R" type="Marker2D" parent="Markers"]
+position = Vector2(8, 0)
+
+[node name="L" type="Marker2D" parent="Markers"]
+position = Vector2(-8, 0)
+
+[node name="T" type="Marker2D" parent="Markers"]
+position = Vector2(0, -8)
+
+[node name="B" type="Marker2D" parent="Markers"]
+position = Vector2(0, 8)
+
+[node name="C" type="Marker2D" parent="Markers"]
+
+[node name="NextUp" type="Marker2D" parent="Markers"]
+position = Vector2(0, -16)
+
+[node name="NextRight" type="Marker2D" parent="Markers"]
+position = Vector2(16, 0)
+
+[node name="NextLeft" type="Marker2D" parent="Markers"]
+position = Vector2(-16, 0)
+
+[node name="NextDown" type="Marker2D" parent="Markers"]
+position = Vector2(0, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_i3wvm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jynfn")
+animation = &"right_up"
+autoplay = "right"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, 0)
+shape = SubResource("RectangleShape2D_ssif5")
+
+[node name="ItemHolder" type="Node2D" parent="."]
+
+[node name="NextBeltDetector" type="Area2D" parent="."]
+position = Vector2(16, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NextBeltDetector"]
+shape = SubResource("RectangleShape2D_vca32")
+
+[node name="Timer" type="Timer" parent="."]

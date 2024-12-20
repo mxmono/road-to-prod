@@ -1,0 +1,96 @@
+[gd_scene load_steps=14 format=3 uid="uid://ccm85w343tu0h"]
+
+[ext_resource type="Script" path="res://dev/smashable.gd" id="1_yikqu"]
+[ext_resource type="Texture2D" uid="uid://2t65dgcl0nws" path="res://texture/ski-bugs.png" id="2_dvpvc"]
+[ext_resource type="Texture2D" uid="uid://bfoouubtluaq0" path="res://texture/ski-snowman.png" id="3_yrrca"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nckvu"]
+atlas = ExtResource("2_dvpvc")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jykn4"]
+atlas = ExtResource("2_dvpvc")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82d1m"]
+atlas = ExtResource("2_dvpvc")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5awc"]
+atlas = ExtResource("2_dvpvc")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xhqyu"]
+atlas = ExtResource("3_yrrca")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ssin8"]
+atlas = ExtResource("3_yrrca")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t5job"]
+atlas = ExtResource("3_yrrca")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2a2ut"]
+atlas = ExtResource("3_yrrca")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sjd0u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nckvu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jykn4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82d1m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c5awc")
+}],
+"loop": true,
+"name": &"die",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xhqyu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ssin8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t5job")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2a2ut")
+}],
+"loop": false,
+"name": &"snowman",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tt8gx"]
+size = Vector2(29, 29)
+
+[node name="Smashable" type="Area2D"]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_yikqu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_sjd0u")
+animation = &"snowman"
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tt8gx")

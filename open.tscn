@@ -1,0 +1,364 @@
+[gd_scene load_steps=28 format=3 uid="uid://d2ybtq335x25i"]
+
+[ext_resource type="Texture2D" uid="uid://cu4v5xgwv0bvc" path="res://texture/cloud1.png" id="1_rasoj"]
+[ext_resource type="Script" path="res://open.gd" id="1_uqvbe"]
+[ext_resource type="Script" path="res://cloud.gd" id="2_bs7oo"]
+[ext_resource type="Texture2D" uid="uid://bd00cqsng46xm" path="res://texture/cloud2.png" id="3_c43je"]
+[ext_resource type="Texture2D" uid="uid://blqtilgokjwja" path="res://texture/cloud3.png" id="4_cgee1"]
+[ext_resource type="Texture2D" uid="uid://dxrjlj0cj5rub" path="res://texture/mtrobson.png" id="5_v6p7h"]
+[ext_resource type="Texture2D" uid="uid://b7pdlbhj1a22i" path="res://texture/forest.png" id="6_71hlg"]
+[ext_resource type="Texture2D" uid="uid://dd7gvhrp1b7jw" path="res://texture/robson-intro.png" id="7_kx7r8"]
+[ext_resource type="Texture2D" uid="uid://cj8bb5sqv1a3x" path="res://texture/forest-rest.png" id="9_bypyf"]
+[ext_resource type="FontFile" uid="uid://8hhosy45djqn" path="res://fonts/mago3.ttf" id="10_67mhc"]
+[ext_resource type="Texture2D" uid="uid://cq5yuk55s7ds6" path="res://texture/climb.png" id="10_kpu00"]
+[ext_resource type="FontFile" uid="uid://ds7bt8fh72gsp" path="res://fonts/mago1.ttf" id="12_diyvc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c35nn"]
+atlas = ExtResource("7_kx7r8")
+region = Rect2(0, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qmwvp"]
+atlas = ExtResource("7_kx7r8")
+region = Rect2(16, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mnqfh"]
+atlas = ExtResource("7_kx7r8")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmrh3"]
+atlas = ExtResource("7_kx7r8")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m7alu"]
+atlas = ExtResource("7_kx7r8")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o1q8m"]
+atlas = ExtResource("7_kx7r8")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hx8ps"]
+atlas = ExtResource("7_kx7r8")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2acsw"]
+atlas = ExtResource("7_kx7r8")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dldpd"]
+atlas = ExtResource("7_kx7r8")
+region = Rect2(16, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5vod"]
+atlas = ExtResource("7_kx7r8")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ivym8"]
+atlas = ExtResource("7_kx7r8")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fowxl"]
+atlas = ExtResource("7_kx7r8")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vjihd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c35nn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qmwvp")
+}],
+"loop": true,
+"name": &"climb",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mnqfh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pmrh3")
+}],
+"loop": true,
+"name": &"hi",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m7alu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o1q8m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hx8ps")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o1q8m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hx8ps")
+}, {
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_o1q8m")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_m7alu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2acsw")
+}],
+"loop": false,
+"name": &"peek",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dldpd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w5vod")
+}],
+"loop": true,
+"name": &"sit",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ivym8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fowxl")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 3.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_06hmb"]
+font = ExtResource("10_67mhc")
+font_size = 48
+outline_color = Color(0.0134828, 0.0424815, 0.0998022, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ioqim"]
+font = ExtResource("12_diyvc")
+font_size = 24
+font_color = Color(0.470076, 0.470076, 0.470076, 1)
+
+[node name="Open" type="Node2D"]
+script = ExtResource("1_uqvbe")
+
+[node name="BG" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="BG" type="ColorRect" parent="BG"]
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.260526, 0.525441, 0.733655, 1)
+metadata/_edit_lock_ = true
+
+[node name="Clouds" type="Node2D" parent="BG"]
+
+[node name="Cloud1" type="Sprite2D" parent="BG/Clouds"]
+position = Vector2(736, 64)
+scale = Vector2(4, 4)
+texture = ExtResource("1_rasoj")
+script = ExtResource("2_bs7oo")
+speed = 1.0
+
+[node name="Cloud2" type="Sprite2D" parent="BG/Clouds"]
+position = Vector2(1040, 152)
+scale = Vector2(4, 4)
+texture = ExtResource("3_c43je")
+script = ExtResource("2_bs7oo")
+speed = 0.1
+
+[node name="Cloud3" type="Sprite2D" parent="BG/Clouds"]
+position = Vector2(160, 112)
+scale = Vector2(4, 4)
+texture = ExtResource("4_cgee1")
+
+[node name="MtRobson" type="TextureRect" parent="BG"]
+offset_left = -113.0
+offset_top = 88.0
+offset_right = 1167.0
+offset_bottom = 808.0
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("5_v6p7h")
+
+[node name="Forest" type="Node2D" parent="."]
+visible = false
+position = Vector2(645, -340)
+
+[node name="Outline" type="Polygon2D" parent="Forest"]
+scale = Vector2(3.05, 3.05)
+polygon = PackedVector2Array(-89, -120.667, -34, 108, 103, 108, 103, -120.667)
+
+[node name="Clip" type="Polygon2D" parent="Forest"]
+clip_children = 1
+scale = Vector2(3, 3)
+polygon = PackedVector2Array(-89, -120.667, -34, 108, 103, 108, 103, -120.667)
+
+[node name="Forest" type="Sprite2D" parent="Forest/Clip"]
+position = Vector2(-257.333, 0)
+texture = ExtResource("6_71hlg")
+
+[node name="Robson" type="AnimatedSprite2D" parent="Forest"]
+position = Vector2(147, 167)
+scale = Vector2(8, 8)
+sprite_frames = SubResource("SpriteFrames_vjihd")
+animation = &"walk"
+autoplay = "walk"
+
+[node name="Rest" type="Node2D" parent="."]
+visible = false
+position = Vector2(-440, 365)
+
+[node name="Outline" type="Polygon2D" parent="Rest"]
+scale = Vector2(3.05, 3.05)
+polygon = PackedVector2Array(-89, -120.667, -88, 108, 78.6667, 108, 103, -120.667)
+
+[node name="Clip" type="Polygon2D" parent="Rest"]
+clip_children = 1
+scale = Vector2(3, 3)
+polygon = PackedVector2Array(-89, -120.667, -88, 108, 78.6667, 108, 103, -120.667)
+
+[node name="Forest" type="Sprite2D" parent="Rest/Clip"]
+position = Vector2(12.6667, -12.6667)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("9_bypyf")
+
+[node name="Robson" type="AnimatedSprite2D" parent="Rest"]
+position = Vector2(-123, 170)
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_vjihd")
+animation = &"sit"
+autoplay = "walk"
+
+[node name="Climb" type="Node2D" parent="."]
+position = Vector2(942, 369)
+
+[node name="Outline" type="Polygon2D" parent="Climb"]
+scale = Vector2(3.05, 3.05)
+polygon = PackedVector2Array(-88.525, -112, -88, 108, 78.6667, 108, 66.557, -112)
+
+[node name="Clip" type="Polygon2D" parent="Climb"]
+clip_children = 1
+scale = Vector2(3, 3)
+polygon = PackedVector2Array(-88.333, -111, -88, 108, 78.6667, 108, 65.333, -111)
+
+[node name="Climb" type="Sprite2D" parent="Climb/Clip"]
+position = Vector2(55.3333, -50.3333)
+scale = Vector2(4, 4)
+texture = ExtResource("10_kpu00")
+
+[node name="Robson" type="AnimatedSprite2D" parent="Climb"]
+position = Vector2(-153, -50)
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_vjihd")
+animation = &"climb"
+autoplay = "walk"
+frame = 1
+frame_progress = 0.124305
+
+[node name="Markers" type="Node2D" parent="."]
+
+[node name="Initial" type="Marker2D" parent="Markers"]
+visible = false
+position = Vector2(646, -340)
+
+[node name="Initial2" type="Marker2D" parent="Markers"]
+position = Vector2(-598, 145)
+
+[node name="Initial3" type="Marker2D" parent="Markers"]
+position = Vector2(910, 1093)
+
+[node name="End" type="Marker2D" parent="Markers"]
+position = Vector2(906, 394)
+
+[node name="End2" type="Marker2D" parent="Markers"]
+position = Vector2(305, 382)
+
+[node name="End3" type="Marker2D" parent="Markers"]
+position = Vector2(942, 369)
+
+[node name="Texts" type="Node2D" parent="."]
+
+[node name="Text1" type="ColorRect" parent="Texts"]
+offset_top = 326.0
+offset_right = 636.0
+offset_bottom = 479.0
+color = Color(0, 0, 0, 0.5)
+
+[node name="Label" type="Label" parent="Texts/Text1"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 37.0
+offset_right = 602.0
+offset_bottom = 116.0
+text = "ROBSON WENT ON A JOURNEY
+TO BETTER HIMSELF"
+label_settings = SubResource("LabelSettings_06hmb")
+
+[node name="Text2" type="ColorRect" parent="Texts"]
+offset_left = 644.0
+offset_top = 65.0
+offset_right = 1280.0
+offset_bottom = 218.0
+color = Color(0, 0, 0, 0.5)
+
+[node name="Label" type="Label" parent="Texts/Text2"]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 37.0
+offset_right = 599.0
+offset_bottom = 116.0
+text = "HE ENRICHED HIMSELF WITH
+FEATURES AND FIXED HIS DEFECTS"
+label_settings = SubResource("LabelSettings_06hmb")
+
+[node name="Text3" type="ColorRect" parent="Texts"]
+offset_left = -1.0
+offset_top = 141.0
+offset_right = 655.0
+offset_bottom = 294.0
+color = Color(0, 0, 0, 0.5)
+
+[node name="Label" type="Label" parent="Texts/Text3"]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 37.0
+offset_right = 599.0
+offset_bottom = 116.0
+text = "FINALLY...
+HE MADE IT TO ONE LAST STRETCH..."
+label_settings = SubResource("LabelSettings_06hmb")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(641, 359)
+enabled = false
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="GUI"]
+offset_right = 1280.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="GUI"]
+offset_top = 680.0
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="GUI"]
+offset_left = 1110.0
+offset_top = 690.0
+offset_right = 1265.0
+offset_bottom = 713.0
+text = "HOLD SPACE TO SKIP"
+label_settings = SubResource("LabelSettings_ioqim")
+
+[node name="Timer" type="Timer" parent="."]

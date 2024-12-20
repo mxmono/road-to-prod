@@ -1,0 +1,77 @@
+[gd_scene load_steps=11 format=3 uid="uid://c23jbebctrdsl"]
+
+[ext_resource type="Script" path="res://dev/snowball.gd" id="1_8ppc3"]
+[ext_resource type="Texture2D" uid="uid://cvdnc82gcy2hd" path="res://texture/ski-snowball.png" id="1_jh4h3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x44l3"]
+atlas = ExtResource("1_jh4h3")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3jds"]
+atlas = ExtResource("1_jh4h3")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g2k4m"]
+atlas = ExtResource("1_jh4h3")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ge7ep"]
+atlas = ExtResource("1_jh4h3")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xpk1b"]
+atlas = ExtResource("1_jh4h3")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iq0ph"]
+atlas = ExtResource("1_jh4h3")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oe3q0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x44l3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3jds")
+}],
+"loop": true,
+"name": &"roll",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g2k4m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ge7ep")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xpk1b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iq0ph")
+}],
+"loop": false,
+"name": &"smash",
+"speed": 6.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p0ay0"]
+radius = 28.0
+
+[node name="Snowball" type="Area2D"]
+collision_mask = 4
+script = ExtResource("1_8ppc3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_oe3q0")
+animation = &"roll"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_p0ay0")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0

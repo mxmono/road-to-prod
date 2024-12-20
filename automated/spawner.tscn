@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://cf473bgncj43q"]
+
+[ext_resource type="Script" path="res://automated/spawner.gd" id="1_02wcd"]
+[ext_resource type="Texture2D" uid="uid://dfysmd3nbvl13" path="res://texture/belt-spawner.png" id="1_on2ww"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxx2u"]
+atlas = ExtResource("1_on2ww")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_obucm"]
+atlas = ExtResource("1_on2ww")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r7g8s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vxx2u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_obucm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_65y37"]
+size = Vector2(12, 12)
+
+[node name="Spawner" type="Node2D"]
+script = ExtResource("1_02wcd")
+
+[node name="ItemHold" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_r7g8s")
+autoplay = "default"
+frame_progress = 0.207032
+
+[node name="Markers" type="Node2D" parent="."]
+
+[node name="Spawn" type="Marker2D" parent="Markers"]
+position = Vector2(16, 0)
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="BeltDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BeltDetector"]
+position = Vector2(16, 0)
+shape = SubResource("RectangleShape2D_65y37")

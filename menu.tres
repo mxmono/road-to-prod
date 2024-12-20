@@ -1,0 +1,17 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://3k1yvpgpomee"]
+
+[ext_resource type="FontFile" uid="uid://8hhosy45djqn" path="res://fonts/mago3.ttf" id="1_0rhej"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u1dsb"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[resource]
+default_font = ExtResource("1_0rhej")
+default_font_size = 48
+Button/colors/font_color = Color(0.658341, 0.65834, 0.65834, 1)
+Button/colors/font_focus_color = Color(0.670588, 0, 0, 1)
+Button/colors/font_hover_color = Color(0.670588, 0, 0, 1)
+Button/font_sizes/font_size = 48
+Button/fonts/font = ExtResource("1_0rhej")
+Button/icons/icon = null
+Button/styles/focus = SubResource("StyleBoxFlat_u1dsb")

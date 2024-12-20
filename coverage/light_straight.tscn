@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=4 uid="uid://bbld8j8ojhxqf"]
+
+[ext_resource type="Script" path="res://coverage/light_straight.gd" id="1_ygyfk"]
+[ext_resource type="TileSet" uid="uid://dxy77uwicsvwv" path="res://texture/tech.tres" id="2_qinwj"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_uw5fy"]
+custom_solver_bias = 0.5
+points = PackedVector2Array(0, 16, -48, 64, 64, 64, 16, 16)
+
+[sub_resource type="LabelSettings" id="LabelSettings_snmbo"]
+font_size = 8
+
+[node name="LightStraight" type="Node2D"]
+script = ExtResource("1_ygyfk")
+
+[node name="Light" type="TileMapLayer" parent="."]
+scale = Vector2(4, 4)
+tile_map_data = PackedByteArray("AAAAAAAAAAAIAAcAAAAAAAEAAAAFAAcAAAAAAAIAAAAFAAcAAAAAAAMAAAAFAAcAAAAAAAQAAAAFAAcAAAAAAAUAAAAFAAcAAAAAAAYAAAAFAAcAAAAAAAcAAAAFAAcAAAAAAAgAAAAFAAcAAAAAAAkAAAAFAAcAAAAAAAoAAAAFAAcAAAAAAAsAAAAFAAcAAAAAAAwAAAAFAAcAAAA=")
+tile_set = ExtResource("2_qinwj")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="Light"]
+visible = false
+shape = SubResource("ConvexPolygonShape2D_uw5fy")
+target_position = Vector2(0, 0)
+
+[node name="Label" type="Label" parent="Light"]
+visible = false
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 80.0
+offset_bottom = 59.0
+text = "0,0   1,0  2,0  3,0   4,0
+0,1   1,1  2,1  3,1   4,1
+0,2   1,2  2,2  3,2   4,2"
+label_settings = SubResource("LabelSettings_snmbo")
+
+[node name="RayCast2D" type="RayCast2D" parent="Light"]
+position = Vector2(8, 16)
+target_position = Vector2(0, 160)
